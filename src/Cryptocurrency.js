@@ -5,11 +5,7 @@ class Cryptocurrency extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: '',
-      name: '',
-      rank: '',
-      ticker: '',
-      price: '',
+      listOfCoins: [],
       lastUpdateTime: new Date()
     }
   }
@@ -20,18 +16,17 @@ class Cryptocurrency extends Component {
       fetch(_url)
       .then(resp => resp.json())
       .then(coinsData => {
-        console.log(coinsData)
         const coins = coinsData.data
         let coinObjects = []
         for (let coin in coins) {
           coinObjects.push(coins[coin])
         }
-        console.log(coinObjects)
-        // this.setState({
-        //   id: 
-        // })
+        this.setState({
+          listOfCoins: coinObjects,
+          lastUpdateTime: new Date()
+        })
       })
-    }, 10000)
+    }, 5000)
   }
 
   componentWillUnmount() {
@@ -51,22 +46,7 @@ class Cryptocurrency extends Component {
               <th scope="col">Ticker</th>
               <th scope="col">Price</th>
             </tr>
-            {/* <tr>
-              <th scope="row">#1</th>
-              <td>BTC <span><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/1.png" /></span></td>
-              <td>$6,192.22</td>
-          </tr>
-          <tr>
-              <th scope="row">#2</th>
-              <td>ETH <span><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/2.png" /></span></td>
-              <td>$260.06</td>
-          </tr>
-          <tr>
-              <th scope="row">#3</th>
-              <td>XRP <span><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/3.png" /></span></td>
-              <td>$0.26</td>
-          </tr> */}
-          <CoinList />
+          <CoinList coins={this.state.listOfCoins}/>
           </tbody>
         </table>
       </div>
