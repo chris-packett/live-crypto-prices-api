@@ -12,7 +12,7 @@ class Cryptocurrency extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => {
-      let _url = `https://api.coinmarketcap.com/v2/ticker/?limit=20`
+      let _url = `https://api.coinmarketcap.com/v2/ticker/?limit=100`
       fetch(_url)
       .then(resp => resp.json())
       .then(coinsData => {
@@ -37,17 +37,17 @@ class Cryptocurrency extends Component {
   render() {
     return (
       <div className="crypto-table">
-        <h1 className="text-shadow nice-color">Crypto Prices API</h1>
+        <h1 className="text-shadow nice-color bigger-text">Crypto Prices API</h1>
         <table>
           <caption id="other-nice-color">Crypto Price Tracker</caption>
-          <tbody>
+          <thead>
             <tr>
               <th scope="col">Rank</th>
               <th scope="col">Ticker</th>
               <th scope="col">Price</th>
             </tr>
+          </thead>
           <CoinList coins={this.state.listOfCoins}/>
-          </tbody>
         </table>
       </div>
     );

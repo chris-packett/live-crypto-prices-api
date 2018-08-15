@@ -4,13 +4,13 @@ import Coin from './Coin'
 class CoinList extends Component {
     render() {
         return (
-            <div>
+            <tbody>
             {
                 this.props.coins.map((coin, idx) => {
                     return <Coin rank={coin.rank} ticker={coin.name} price={coin.quotes.USD.price} id={coin.id} key={idx}/>
                 })
             }
-            </div>
+            </tbody>
         );
     }
 }

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgba(105,105,105,.25);
 }
 
 td,
@@ -16,6 +17,10 @@ td {
 
 tr:nth-child(even) {
   background-color: #eee;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
 }
 
 th[scope="col"] {
@@ -47,7 +52,6 @@ table {
 }
 
 .nice-color {
-
   color: #6ed7d1;
 }
 
@@ -58,7 +62,11 @@ table {
 .text-shadow {
   text-shadow:
     -.5px -.5px 0 #696969,
-    .5px -.5px 0 #696969,
+    1px -1px 0 #696969,
     -.5px .5px 0 #696969,
-    .5px .5px 0 #696969;
+    1px 1px 0 #696969;
+}
+
+.bigger-text {
+  font-size: 3em;
 }
